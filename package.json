@@ -1,0 +1,28 @@
+{
+  "name": "i18n",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "author": "Janek Rahrt <janek.rahrt@me.com>",
+  "scripts": {
+    "build": "babel src -d dist",
+    "test": "jest src"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/node": "^7.2.2",
+    "@babel/plugin-transform-runtime": "^7.4.3",
+    "@babel/preset-env": "^7.1.0",
+    "babel-jest": "^24.7.1",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-react": "^7.11.1",
+    "jest": "^24.7.1",
+    "nodemon": "^1.18.11",
+    "prettier": "1.14.3"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.4.3"
+  }
+}
