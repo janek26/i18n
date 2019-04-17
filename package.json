@@ -1,8 +1,17 @@
 {
   "name": "@janek26/i18n",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "author": "Janek Rahrt <janek.rahrt@me.com>",
+  "keywords": [
+    "i18n",
+    "template-literals",
+    "l10n",
+    "internationalization",
+    "localization",
+    "language",
+    "translation"
+  ],
   "scripts": {
     "build": "babel src -d dist",
     "test": "jest src",
