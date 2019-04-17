@@ -1,5 +1,5 @@
 {
-  "name": "i18n",
+  "name": "@janek26/i18n",
   "version": "1.0.0",
   "main": "dist/index.js",
   "author": "Janek Rahrt <janek.rahrt@me.com>",
