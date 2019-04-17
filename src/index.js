@@ -19,13 +19,18 @@ export const setConfig = async (configNew = {}) => {
     ...defaultConfig,
     ...config,
     ...configNew,
+    resources: {
+      ...defaultConfig.resources,
+      ...config.resources,
+      ...configNew.resources,
+    },
   }
   if (configNew.resources || configNew.lng) {
     const keys = updatedConfig.lng.filter(key => {
-      const val = configNew.resources[key]
+      const val = updatedConfig.resources[key]
       return typeof val === 'function'
     })
-    const funcs = keys.map(key => configNew.resources[key]())
+    const funcs = keys.map(key => updatedConfig.resources[key]())
     resolvedRecources = await Promise.all(funcs).then(x =>
       x.reduce((acc, val, keyIndex) => ({ ...acc, [keys[keyIndex]]: val }), {}),
     )
@@ -33,9 +38,7 @@ export const setConfig = async (configNew = {}) => {
   config = {
     ...updatedConfig,
     resources: {
-      ...defaultConfig.resources,
-      ...config.resources,
-      ...configNew.resources,
+      ...updatedConfig.resources,
       ...resolvedRecources,
     },
   }
