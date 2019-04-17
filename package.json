@@ -5,7 +5,8 @@
   "author": "Janek Rahrt <janek.rahrt@me.com>",
   "scripts": {
     "build": "babel src -d dist",
-    "test": "jest src"
+    "test": "jest src",
+    "prepublish": "yarn build"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
