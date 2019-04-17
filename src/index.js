@@ -20,7 +20,7 @@ export const setConfig = async (configNew = {}) => {
     ...config,
     ...configNew,
   }
-  if (configNew.resources) {
+  if (configNew.resources || configNew.lng) {
     const keys = updatedConfig.lng.filter(key => {
       const val = configNew.resources[key]
       return typeof val === 'function'

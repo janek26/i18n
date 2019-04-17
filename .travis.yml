@@ -3,3 +3,8 @@ node_js:
   - '8'
   - '10'
   - '11'
+
+deploy:
+  provider: npm
+  email: 'janek.rahrt@me.com'
+  api_key: '411807b6-0835-4734-b5c9-6bd5654d5d60'
