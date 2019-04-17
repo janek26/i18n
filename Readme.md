@@ -6,6 +6,7 @@ That's it. The rest is optional.
 [![Build Status](https://travis-ci.org/janek26/i18n.svg?branch=master)](https://travis-ci.org/janek26/i18n)
 [![NPM Version](https://img.shields.io/npm/v/@janek26\/i18n.svg)](https://www.npmjs.com/package/@janek26/i18n)
 ![Size](https://img.shields.io/bundlephobia/min/@janek26/i18n.svg)
+![Issues](https://img.shields.io/github/issues/janek26/i18n.svg)
 
 This way you can use i18n today and implement the details another time!
 
