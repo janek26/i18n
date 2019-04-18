@@ -8,20 +8,25 @@ const defaultConfig = {
     },
   },
   onKey: ({ key, type, lng }) => {},
+  writeConfig: newConfig => {
+    config = newConfig
+  },
+  readConfig: () => config,
 }
 
 let config = { ...defaultConfig }
 
-export const getConfig = () => ({ ...config })
+export const getConfig = () => ({ ...config.readConfig() })
+const writeConfig = config.writeConfig
 export const setConfig = async (configNew = {}) => {
   let resolvedRecources = {}
   const updatedConfig = {
     ...defaultConfig,
-    ...config,
+    ...getConfig(),
     ...configNew,
     resources: {
       ...defaultConfig.resources,
-      ...config.resources,
+      ...getConfig().resources,
       ...configNew.resources,
     },
   }
@@ -35,13 +40,13 @@ export const setConfig = async (configNew = {}) => {
       x.reduce((acc, val, keyIndex) => ({ ...acc, [keys[keyIndex]]: val }), {}),
     )
   }
-  config = {
+  writeConfig({
     ...updatedConfig,
     resources: {
       ...updatedConfig.resources,
       ...resolvedRecources,
     },
-  }
+  })
 }
 
 const calcKey = (statics, calledBy) => {
@@ -50,7 +55,7 @@ const calcKey = (statics, calledBy) => {
       acc + val + (statics.length - 1 !== i ? `\${${i + 1}}` : ''),
     '',
   )
-  const { resources = {}, lng: [lng] = [] } = config
+  const { resources = {}, lng: [lng] = [] } = getConfig()
   const { translation = {}, plural = {} } = resources[lng]
   const isTranslation = !!translation[key]
   const isPlural = !!plural[key]
@@ -62,7 +67,7 @@ const calcKey = (statics, calledBy) => {
         ? 'unknown_translation'
         : 'unknown_plural'
 
-  config.onKey({ key, type, lng })
+  getConfig().onKey({ key, type, lng })
   return key
 }
 const parseValuesToStatics = (statics, vars) =>
@@ -72,20 +77,20 @@ const parseValuesToStatics = (statics, vars) =>
   )
 
 const getResourceForKeys = (locals, type) => key =>
-  config.resources[
+  getConfig().resources[
     locals.find(
       locale =>
         !!(
-          config.resources[locale] &&
-          config.resources[locale][type] &&
-          config.resources[locale][type][key]
+          getConfig().resources[locale] &&
+          getConfig().resources[locale][type] &&
+          getConfig().resources[locale][type][key]
         ),
     )
   ] || {}
 
 export const t = (statics, ...vars) => {
   const key = calcKey(statics, 't')
-  const { lng = [] } = config
+  const { lng = [] } = getConfig()
   const { translation = {} } = getResourceForKeys(lng, 'translation')(key)
 
   if (!translation[key]) return parseValuesToStatics(statics, vars)
@@ -103,19 +108,19 @@ export const t = (statics, ...vars) => {
 
 export const p = ([start, end], count) => {
   const key = calcKey([start, end], 'p')
-  const { lng = [] } = config
+  const { lng = [] } = getConfig()
   const { plural = {} } = getResourceForKeys(lng, 'plural')(key)
   if (!plural[key]) return parseValuesToStatics([start, end], [count])
   return plural[key](count)
 }
 
 export const mod = modifierKey => (...args) => {
-  const { lng = [], resources = {} } = config
+  const { lng = [], resources = {} } = getConfig()
   const { modifier = {} } = getResourceForKeys(lng, 'modifier')(modifierKey)
 
   const primaryLang = lng[0]
 
-  config.onKey({
+  getConfig().onKey({
     key: modifierKey,
     type:
       resources[primaryLang] &&
