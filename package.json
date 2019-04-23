@@ -1,7 +1,7 @@
 {
   "name": "@janek26/i18n",
-  "version": "1.0.6",
-  "main": "dist/index.js",
+  "version": "1.0.7",
+  "main": "index.js",
   "author": "Janek Rahrt <janek.rahrt@me.com>",
   "keywords": [
     "i18n",
@@ -13,12 +13,13 @@
     "translation"
   ],
   "files": [
-    "dist"
+    "react.js"
   ],
   "scripts": {
     "build": "babel src -d dist",
     "test": "jest src",
-    "prepublishOnly": "yarn build"
+    "prepublishOnly": "yarn build && cp -r ./dist/* . && rm -rf ./dist",
+    "postpublish": "git clean -fd"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
