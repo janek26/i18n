@@ -1,9 +1,10 @@
 language: node_js
 node_js:
-- '8'
-- '10'
-- '11'
+  - '8'
+  - '10'
+  - '11'
 deploy:
+  skip_cleanup: true
   provider: npm
   email: janek.rahrt@me.com
   api_key:
