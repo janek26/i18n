@@ -11,9 +11,9 @@ export const I18nProvider = ({ children }) => {
     <I18nContext.Provider
       value={{
         config,
-        setConfig: config => {
+        setConfig: newConfig => {
           setConfig({
-            ...config,
+            ...newConfig,
             writeConfig,
           })
         },
