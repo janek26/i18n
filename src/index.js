@@ -40,7 +40,7 @@ export const setConfig = async (configNew = {}) => {
       x.reduce((acc, val, keyIndex) => ({ ...acc, [keys[keyIndex]]: val }), {}),
     )
   }
-  writeConfig({
+  updatedConfig.writeConfig({
     ...updatedConfig,
     resources: {
       ...updatedConfig.resources,
