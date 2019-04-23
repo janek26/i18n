@@ -4,8 +4,8 @@ import { getConfig, mod, p, setConfig, t } from '.'
 
 export const I18nContext = React.createContext()
 
-export const I18nProvider = ({ children }) => {
-  const [config, writeConfig] = useState(getConfig())
+export const I18nProvider = ({ children, defaultConfig }) => {
+  const [config, writeConfig] = useState(defaultConfig || getConfig())
 
   return (
     <I18nContext.Provider
