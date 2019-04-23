@@ -18,7 +18,7 @@
   "scripts": {
     "build": "babel src -d dist",
     "test": "jest src",
-    "prepublish": "yarn build"
+    "prepublish": "yarn install --production=false && yarn build"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
