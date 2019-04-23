@@ -11,7 +11,9 @@ export const I18nProvider = ({ children }) => {
     readConfig: () => config,
   })
   return (
-    <I18nContext.Provider value={{ config }}>{children}</I18nContext.Provider>
+    <I18nContext.Provider value={{ config, setConfig }}>
+      {children}
+    </I18nContext.Provider>
   )
 }
 export const withI18n = ({ children }) => {
@@ -23,4 +25,4 @@ export const withI18n = ({ children }) => {
   })
 }
 
-export { p, t, mod, setConfig }
+export { p, t, mod }
