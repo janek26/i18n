@@ -12,8 +12,10 @@ export const I18nProvider = ({ children }) => {
       value={{
         config,
         setConfig: config => {
-          writeConfig(config)
-          setConfig(config)
+          setConfig({
+            ...config,
+            writeConfig,
+          })
         },
       }}
     >
