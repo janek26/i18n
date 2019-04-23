@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 import { getConfig, mod, p, setConfig, t } from '.'
 
@@ -7,18 +7,16 @@ export const I18nContext = React.createContext()
 export const I18nProvider = ({ children }) => {
   const [config, writeConfig] = useState(getConfig())
 
-  useEffect(() => {
-    setConfig({
-      writeConfig,
-      readConfig: () => config,
-    })
-  }, [])
-
   return (
     <I18nContext.Provider
       value={{
         config,
-        setConfig,
+        setConfig: c =>
+          setConfig({
+            ...c,
+            writeConfig,
+            readConfig: () => config,
+          }),
       }}
     >
       {children}
