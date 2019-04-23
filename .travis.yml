@@ -1,10 +1,10 @@
 language: node_js
 node_js:
-  - '8'
-  - '10'
-  - '11'
-
+- '8'
+- '10'
+- '11'
 deploy:
   provider: npm
-  email: 'janek.rahrt@me.com'
-  api_key: '411807b6-0835-4734-b5c9-6bd5654d5d60'
+  email: janek.rahrt@me.com
+  api_key:
+    secure: mwgYDVu9qsZeXwAfJAmeIywc/RyIFRwizXOlkvnnAleLujliQzmZx5T80ltVA89ia5bB3CcdLZ5lChj6CSi8rG/cjLKkjKugCQAcwrp5L0xdrFe1EB420GlkSwP+am5KLVkUryT0z9kCEGFDfWqgQxjP7VeU3z4BkbrSTacUm3w+/S5yJEPVRCKpghdGKu7TcpPfBraORGof7JTmxZb7tRit7Zb2AOoh4pZjwQHBPjgSmtWbkjXUIvTa+cY0uU2dX4iWW3N2AQk1iFoCW6NK/5hqOGkmYXWnfxAVyC5+U/qCFsZd+8i+GtLMqeFf9SI6pQFSSmubworQAWsiCGdY1MDpsP5C7zBX1DXNYKKg3sngKhPZwyYoizVqoyQpOFZDRkN/my0IFhWUoAC7LFu2oCWwuWrhftdFtrO40F7oI+gbhvp04qC3W4pee6weCGIBwCUBSljQiREc9kEb7F+bWR91Lv8ED8tXVeVzhcYPqA0wDdAxIwumyOcB2OhLgSqMCyJllc93QZ7FTRxaPSzygte+1+sAd4NBB+KRrg9mNO0ba0uPlTt+r8vhBBZQ2qNEDHNE3oPHZShcDLAl1T+f1Le7oPaGEnXyQc/mjboDpbAvAd+RkcLzSM0o1l86sDdRMdXNI66QG3JzgMtZbSOalbFgVgn/ovrrhOX/xvirEi4=
