@@ -7,6 +7,7 @@ const defaultConfig = {
       modifier: {},
     },
   },
+  // eslint-disable-next-line no-unused-vars
   onKey: ({ key, type, lng }) => {},
   writeConfig: newConfig => {
     config = newConfig
@@ -17,7 +18,7 @@ const defaultConfig = {
 let config = { ...defaultConfig }
 
 export const getConfig = () => ({ ...config.readConfig() })
-const writeConfig = config.writeConfig
+
 export const setConfig = async (configNew = {}) => {
   let resolvedRecources = {}
   const updatedConfig = {

@@ -7,16 +7,18 @@ export const I18nContext = React.createContext()
 export const I18nProvider = ({ children }) => {
   const [config, writeConfig] = useState(getConfig())
 
+  useEffect(() => {
+    setConfig({
+      writeConfig,
+      readConfig: () => config,
+    })
+  }, [])
+
   return (
     <I18nContext.Provider
       value={{
         config,
-        setConfig: newConfig => {
-          setConfig({
-            ...newConfig,
-            writeConfig,
-          })
-        },
+        setConfig,
       }}
     >
       {children}
