@@ -1,6 +1,6 @@
 {
   "name": "@janek26/i18n",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "main": "dist/index.js",
   "author": "Janek Rahrt <janek.rahrt@me.com>",
   "keywords": [
